@@ -6,6 +6,7 @@ use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Routing\Redirector;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class AuthRequestTest extends TestCase
 {
@@ -20,7 +21,7 @@ class AuthRequestTest extends TestCase
         return $request;
     }
 
-    /** @test */
+    #[Test]
     public function itFailsValidationWithInvalidEmail()
     {
         $this->expectException(HttpResponseException::class);
@@ -29,7 +30,7 @@ class AuthRequestTest extends TestCase
         $request = $this->prepareRequest($data);
     }
 
-    /** @test */
+    #[Test]
     public function itFailsValidationWithNoEmail()
     {
         $this->expectException(HttpResponseException::class);
@@ -38,7 +39,7 @@ class AuthRequestTest extends TestCase
         $request = $this->prepareRequest($data);
     }
 
-    /** @test */
+    #[Test]
     public function itFailsValidationWithInvalidPassword()
     {
         $this->expectException(HttpResponseException::class);
@@ -47,7 +48,7 @@ class AuthRequestTest extends TestCase
         $request = $this->prepareRequest($data);
     }
 
-    /** @test */
+    #[Test]
     public function itFailsValidationWithNoPassword()
     {
         $this->expectException(HttpResponseException::class);
@@ -56,7 +57,7 @@ class AuthRequestTest extends TestCase
         $request = $this->prepareRequest($data);
     }
 
-    /** @test */
+    #[Test]
     public function itPassesValidationWithValidData()
     {
         $data = ['email' => 'test@example.com', 'password' => 'validPassword123'];

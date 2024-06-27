@@ -6,11 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Requests\AuthRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function itRespondsWithTokenOnSuccessfulAuthentication()
     {
         $request = $this->createMock(AuthRequest::class);
@@ -39,7 +40,7 @@ class AuthControllerTest extends TestCase
         $this->assertEquals($response->content(), json_encode(['apiToken' => 'testApiToken']));
     }
 
-    /** @test */
+    #[Test]
     public function itRespondsWithUnauthenticatedOnFailedAuthentication()
     {
         $request = $this->createMock(AuthRequest::class);

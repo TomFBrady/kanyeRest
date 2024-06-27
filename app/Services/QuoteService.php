@@ -5,18 +5,24 @@ namespace App\Services;
 use App\Http\Exceptions\QuoteRetrievalException;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class QuoteService
 {
     private $url = 'https://api.kanye.rest/';
     private $numberOfQuotes = 5;
+    private $cacheTTL = 600;
 
     public function getQuotes(): Collection
     {
         try {
-            $responses = $this->fetchQuotes();
-            $quotes = $this->validatAndFormatResponses($responses);
+            $quotes = Cache::remember('quotes', $this->cacheTTL, function () {
+                $responses = $this->fetchQuotes();
+                $quotes = $this->validatAndFormatResponses($responses);
+
+                return $quotes;
+            });
 
             return $quotes;
         } catch (\Throwable $e) {

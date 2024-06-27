@@ -11,7 +11,7 @@ use Tests\TestCase;
 class AuthControllerTest extends TestCase
 {
     /** @test */
-    public function it_responds_with_token_on_successful_authentication()
+    public function itRespondsWithTokenOnSuccessfulAuthentication()
     {
         $request = $this->createMock(AuthRequest::class);
         $request->expects($this->once())
@@ -40,7 +40,7 @@ class AuthControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_responds_with_unauthenticated_on_failed_authentication()
+    public function itRespondsWithUnauthenticatedOnFailedAuthentication()
     {
         $request = $this->createMock(AuthRequest::class);
         $request->expects($this->once())

@@ -11,9 +11,9 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-
             return response()->json(['apiToken' => $request->user()->generateApiToken()], 200);
         }
+
         return response()->json(['message' => 'Unauthenticated'], 401);
     }
 }

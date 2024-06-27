@@ -20,7 +20,7 @@ class AuthRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_fails_validation_with_invalid_email()
+    public function itFailsValidationWithInvalidEmail()
     {
         $this->expectException(HttpResponseException::class);
 
@@ -29,7 +29,7 @@ class AuthRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_fails_validation_with_no_email()
+    public function itFailsValidationWithNoEmail()
     {
         $this->expectException(HttpResponseException::class);
 
@@ -38,7 +38,7 @@ class AuthRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_fails_validation_with_invalid_password()
+    public function itFailsValidationWithInvalidPassword()
     {
         $this->expectException(HttpResponseException::class);
 
@@ -47,7 +47,7 @@ class AuthRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_fails_validation_with_no_password()
+    public function itFailsValidationWithNoPassword()
     {
         $this->expectException(HttpResponseException::class);
 
@@ -56,7 +56,7 @@ class AuthRequestTest extends TestCase
     }
 
     /** @test */
-    public function it_passes_validation_with_valid_data()
+    public function itPassesValidationWithValidData()
     {
         $data = ['email' => 'test@example.com', 'password' => 'validPassword123'];
 
@@ -64,7 +64,7 @@ class AuthRequestTest extends TestCase
             $request = $this->prepareRequest($data);
             $this->assertTrue(true); // Dummy assertion to pass the test, test failure is detirmined by exception thrown
         } catch (HttpResponseException $e) {
-            $this->fail("Validation should not fail with valid data.");
+            $this->fail('Validation should not fail with valid data.');
         }
     }
 }

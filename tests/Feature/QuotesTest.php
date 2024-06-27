@@ -3,10 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class QuotesTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -21,12 +25,26 @@ class QuotesTest extends TestCase
 
     public function testTheApplicationReturnsASuccessfulResponse(): void
     {
+        Http::fake([
+            'https://api.kanye.rest/' => Http::response(['quote' => 'I am kanye'], 200),
+        ]);
+
         $response = $this->withHeaders([
             'Authorization' => 'Bearer testApiToken',
         ])->get('/api/quotes');
 
         $response->assertStatus(200);
-        $response->assertJsonFragment(['Endpoint hit!']);
+        $response->assertJson(
+            [
+                'quotes' => [
+                    ['quote' => 'I am kanye'],
+                    ['quote' => 'I am kanye'],
+                    ['quote' => 'I am kanye'],
+                    ['quote' => 'I am kanye'],
+                    ['quote' => 'I am kanye'],
+                ],
+            ]
+        );
     }
 
     public function testTheApplicationReturnsAnUnauthenticatedResponseWithNoBearer(): void

@@ -35,4 +35,6 @@ return [
         ],
     ],
 
+    'kanyeRestUrl' => env('KANYE_REST_URL'),
+
 ];

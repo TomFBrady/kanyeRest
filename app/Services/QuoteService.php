@@ -6,13 +6,19 @@ use App\Http\Exceptions\QuoteRetrievalException;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 
 class QuoteService
 {
-    private $url = 'https://api.kanye.rest/';
+    private $url;
     private $numberOfQuotes = 5;
     private $cacheTTL = 600;
+
+    public function __construct()
+    {
+        $this->url = Config::get('services.kanyeRestUrl');
+    }
 
     public function getQuotes(): Collection
     {

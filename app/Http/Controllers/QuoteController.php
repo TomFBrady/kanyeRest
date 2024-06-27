@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BaseJsonRequest;
 use App\Services\QuoteService;
 
 class QuoteController extends Controller
 {
     protected $quoteService;
 
-    public function __construct(QuoteService $quoteService)
+    public function __construct(BaseJsonRequest $request, QuoteService $quoteService)
     {
         $this->quoteService = $quoteService;
     }

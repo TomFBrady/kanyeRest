@@ -9,8 +9,6 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class AuthRequest extends BaseJsonRequest
 {
-    protected $stopOnFirstFailure = true;
-
     public function rules(): array
     {
         return [

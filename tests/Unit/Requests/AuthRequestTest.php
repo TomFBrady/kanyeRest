@@ -12,6 +12,7 @@ class AuthRequestTest extends TestCase
     private function prepareRequest(array $data): AuthRequest
     {
         $request = AuthRequest::create('/', 'POST', $data);
+        $request->headers->set('Accept', 'application/json');
         $request->setContainer($this->app)
             ->setRedirector(app(Redirector::class))
             ->validateResolved();

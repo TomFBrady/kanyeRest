@@ -2,10 +2,13 @@
 
 namespace Tests\Feature\Commands;
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class CreateUserTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testTheCommandCreatesAUser(): void
     {
         $this->createTestUser();

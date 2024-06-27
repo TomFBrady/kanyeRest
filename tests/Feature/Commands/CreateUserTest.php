@@ -6,13 +6,13 @@ use Tests\TestCase;
 
 class CreateUserTest extends TestCase
 {
-    public function test_the_command_creates_a_user(): void
+    public function testTheCommandCreatesAUser(): void
     {
         $this->createTestUser();
         $this->assertDatabaseHas('users', ['email' => 'test@test.com']);
     }
 
-    public function test_error_is_returned_if_user_already_exists(): void
+    public function testErrorIsReturnedIfUserAlreadyExists(): void
     {
         $this->createTestUser();
         $this->artisan(
@@ -20,7 +20,7 @@ class CreateUserTest extends TestCase
             [
                 'name' => 'John Doe',
                 'email' => 'test@test.com',
-                'password' => 'password'
+                'password' => 'password',
             ]
         )->expectsOutput('User already exists');
         $this->assertDatabaseCount('users', 1);
@@ -33,7 +33,7 @@ class CreateUserTest extends TestCase
             [
                 'name' => 'John Doe',
                 'email' => 'test@test.com',
-                'password' => 'password'
+                'password' => 'password',
             ]
         );
     }

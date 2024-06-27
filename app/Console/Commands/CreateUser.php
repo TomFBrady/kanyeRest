@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Models\User;
+use Illuminate\Console\Command;
 
 class CreateUser extends Command
 {
@@ -30,13 +30,14 @@ class CreateUser extends Command
 
         if ($user) {
             $this->error('User already exists');
+
             return;
         }
 
         User::factory()->create([
             'name' => $this->argument('name'),
             'email' => $this->argument('email'),
-            'password' => $this->argument('password')
+            'password' => $this->argument('password'),
         ]);
     }
 }

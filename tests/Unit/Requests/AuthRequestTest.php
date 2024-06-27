@@ -5,8 +5,8 @@ namespace Tests\Unit;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Routing\Redirector;
-use Tests\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\TestCase;
 
 class AuthRequestTest extends TestCase
 {

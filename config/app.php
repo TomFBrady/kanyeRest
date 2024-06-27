@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'numberOfQuotes' => env('NUMBER_OF_QUOTES', 5),
+    'cacheTTL' => env('CACHE_TTL', 600),
 ];

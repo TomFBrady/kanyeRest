@@ -12,12 +12,14 @@ use Illuminate\Support\Facades\Http;
 class QuoteService
 {
     private $url;
-    private $numberOfQuotes = 5;
-    private $cacheTTL = 600;
+    private $numberOfQuotes;
+    private $cacheTTL;
 
     public function __construct()
     {
         $this->url = Config::get('services.kanyeRestUrl');
+        $this->numberOfQuotes = Config::get('app.numberOfQuotes');
+        $this->cacheTTL = Config::get('app.cacheTTL');
     }
 
     public function getQuotes(): Collection

@@ -10,7 +10,7 @@ class QuoteRetrievalException extends \Exception
     protected $message = 'Quote retrieval failed';
     protected $code = 404;
 
-    public function __construct($message = 'Quote retrieval failed', $code = 500, ?\Exception $previous = null)
+    public function __construct($message = 'Quote retrieval failed', $code = 500, \Exception $previous = null)
     {
         $this->message = $message;
         $this->code = $code;

@@ -31,6 +31,7 @@ class QuotesTest extends TestCase
 
         $response = $this->withHeaders([
             'Authorization' => 'Bearer testApiToken',
+            'Accept' => 'application/json',
         ])->get('/api/quotes');
 
         $response->assertStatus(200);
@@ -49,7 +50,7 @@ class QuotesTest extends TestCase
 
     public function testTheApplicationReturnsAnUnauthenticatedResponseWithNoBearer(): void
     {
-        $response = $this->get('/api/quotes');
+        $response = $this->withHeaders(['Accept' => 'application/json'])->get('/api/quotes');
 
         $response->assertStatus(401);
         $response->assertJsonFragment(['Unauthenticated']);
@@ -59,6 +60,7 @@ class QuotesTest extends TestCase
     {
         $response = $this->withHeaders([
             'Authorization' => 'Bearer wrongBearer',
+            'Accept' => 'application/json',
         ])->get('/api/quotes');
 
         $response->assertStatus(401);

@@ -14,6 +14,11 @@ Install the required dependencies
 composer install
 ```
 
+Run the migrations
+```bash
+php artisan migrate
+```
+
 And finally, start the server.
 ```bash
 php artisan serve

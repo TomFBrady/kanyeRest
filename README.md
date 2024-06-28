@@ -24,6 +24,11 @@ Set the absolute path for the newly created database
 php artisan db:set-path
 ```
 
+Clear the artisan cache now path has changed.
+```bash
+php artisan optimize
+```
+
 And finally, start the server.
 ```bash
 php artisan serve

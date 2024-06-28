@@ -14,7 +14,7 @@ Install the required dependencies
 composer install
 ```
 
-Run the migrations
+Run the migrations, and select the option to create the database.
 ```bash
 php artisan migrate
 ```

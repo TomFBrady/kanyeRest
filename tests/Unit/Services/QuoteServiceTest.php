@@ -55,4 +55,23 @@ class QuoteServiceTest extends TestCase
         $this->assertCount(1, $quotes);
         $this->assertEquals('cached quote', $quotes->first());
     }
+
+    #[Test]
+    public function itInvalidatesCacheCorrectly()
+    {
+        Cache::add('quotes', collect(['quote' => 'cached quote']), 600);
+        Http::fake([
+            'https://api.kanye.rest/' => Http::response(['quote' => 'kanye quote'], 200),
+        ]);
+
+        $service = new QuoteService();
+        $quotes = $service->getQuotes();
+
+        $this->assertCount(1, $quotes);
+        $this->assertEquals('cached quote', $quotes->first());
+        $service->invalidateCache();
+        $quotes = $service->getQuotes();
+        $this->assertCount(5, $quotes);
+        $this->assertEquals('kanye quote', $quotes->first()['quote']);
+    }
 }

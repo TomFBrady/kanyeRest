@@ -22,7 +22,7 @@ class AuthRequestTest extends TestCase
     }
 
     #[Test]
-    public function itFailsValidationWithInvalidEmail()
+    public function itFailsValidationWithInvalidEmail(): void
     {
         $this->expectException(HttpResponseException::class);
 
@@ -31,7 +31,7 @@ class AuthRequestTest extends TestCase
     }
 
     #[Test]
-    public function itFailsValidationWithNoEmail()
+    public function itFailsValidationWithNoEmail(): void
     {
         $this->expectException(HttpResponseException::class);
 
@@ -40,7 +40,7 @@ class AuthRequestTest extends TestCase
     }
 
     #[Test]
-    public function itFailsValidationWithInvalidPassword()
+    public function itFailsValidationWithInvalidPassword(): void
     {
         $this->expectException(HttpResponseException::class);
 
@@ -49,7 +49,7 @@ class AuthRequestTest extends TestCase
     }
 
     #[Test]
-    public function itFailsValidationWithNoPassword()
+    public function itFailsValidationWithNoPassword(): void
     {
         $this->expectException(HttpResponseException::class);
 
@@ -58,7 +58,7 @@ class AuthRequestTest extends TestCase
     }
 
     #[Test]
-    public function itPassesValidationWithValidData()
+    public function itPassesValidationWithValidData(): void
     {
         $data = ['email' => 'test@example.com', 'password' => 'validPassword123'];
 

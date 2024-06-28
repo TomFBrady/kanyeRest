@@ -12,7 +12,7 @@ use Tests\TestCase;
 class QuoteServiceTest extends TestCase
 {
     #[Test]
-    public function itRetrievesQuotesSuccessfully()
+    public function itRetrievesQuotesSuccessfully(): void
     {
         Http::fake([
             'https://api.kanye.rest/' => Http::response(['quote' => 'kanye quote'], 200),
@@ -26,7 +26,7 @@ class QuoteServiceTest extends TestCase
     }
 
     #[Test]
-    public function itThrowsAnExceptionWhenAQuoteRetrievalFails()
+    public function itThrowsAnExceptionWhenAQuoteRetrievalFails(): void
     {
         Http::fake([
             'https://api.kanye.rest/' => Http::sequence()
@@ -42,7 +42,7 @@ class QuoteServiceTest extends TestCase
     }
 
     #[Test]
-    public function itCachesQuotesSuccessfully()
+    public function itCachesQuotesSuccessfully(): void
     {
         Cache::add('quotes', collect(['quote' => 'cached quote']), 600);
         Http::fake([
@@ -57,7 +57,7 @@ class QuoteServiceTest extends TestCase
     }
 
     #[Test]
-    public function itInvalidatesCacheCorrectly()
+    public function itInvalidatesCacheCorrectly(): void
     {
         Cache::add('quotes', collect(['quote' => 'cached quote']), 600);
         Http::fake([

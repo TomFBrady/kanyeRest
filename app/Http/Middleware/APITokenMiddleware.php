@@ -5,11 +5,12 @@ namespace App\Http\Middleware;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class APITokenMiddleware
 {
-    public function handle(Request $request, \Closure $next): JsonResponse
+    public function handle(Request $request, \Closure $next): JsonResponse|Response
     {
         $token = $request->bearerToken();
 

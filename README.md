@@ -19,6 +19,11 @@ Run the migrations, and select the option to create the database.
 php artisan migrate
 ```
 
+Set the absolute path for the newly created database
+```bash
+php artisan db:set-path
+```
+
 And finally, start the server.
 ```bash
 php artisan serve

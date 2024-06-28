@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BaseJsonRequest;
 use App\Services\QuoteService;
+use Illuminate\Http\JsonResponse;
 
 class QuoteController extends Controller
 {
@@ -14,10 +15,15 @@ class QuoteController extends Controller
         $this->quoteService = $quoteService;
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
         $quotes = $this->quoteService->getQuotes();
 
         return response()->json(['quotes' => $quotes]);
+    }
+
+    public function refresh(): void
+    {
+        $this->quoteService->invalidateCache();
     }
 }

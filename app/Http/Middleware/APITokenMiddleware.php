@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class APITokenMiddleware
 {
-    public function handle(Request $request, \Closure $next)
+    public function handle(Request $request, \Closure $next): JsonResponse
     {
         $token = $request->bearerToken();
 

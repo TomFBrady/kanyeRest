@@ -61,4 +61,9 @@ class QuoteService
 
         return $quotes;
     }
+
+    public function invalidateCache(): void
+    {
+        Cache::forget('quotes');
+    }
 }
